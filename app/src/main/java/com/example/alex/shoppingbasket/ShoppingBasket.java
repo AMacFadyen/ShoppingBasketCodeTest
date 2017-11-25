@@ -34,5 +34,9 @@ public class ShoppingBasket {
         totalCost -= item.getValue();
     }
 
+    public void empty(){
+        container.clear();
+        totalCost = 0;
+    }
 
 }
