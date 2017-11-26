@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 
 public class TestItem {
 
-    ShoppingBasket shoppingBasket;
+    Customer customer;
     Item item1;
     Item item2;
     Item item3;
