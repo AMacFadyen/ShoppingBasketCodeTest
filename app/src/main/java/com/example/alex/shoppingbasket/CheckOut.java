@@ -50,7 +50,7 @@ public class CheckOut {
     public void adjustBuyOneGetOneFree(Customer customer){
         for(int i = 0; i < customer.getBasket().size(); i++){
            int frequency = Collections.frequency(customer.getBasket(), customer.getBasket().get(i));
-            if (frequency % 2 == 0){
+            if (frequency >= 2){
                 calcCost = calcCost - customer.getBasket().get(i).getValue();
             }
             customer.getBasket().remove(i);
