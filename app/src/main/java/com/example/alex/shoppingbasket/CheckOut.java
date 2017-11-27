@@ -10,11 +10,15 @@ import static android.media.CamcorderProfile.get;
  * Created by Alex on 26/11/2017.
  */
 
+
+
 public class CheckOut {
 
     private Integer calcCost;
+    private ArrayList boughtItems;
 
     public CheckOut(){
+        ArrayList boughtItems = new ArrayList<Item>();
     }
 
     public Boolean hasLoyaltyCard(Customer customer){
@@ -26,6 +30,7 @@ public class CheckOut {
             for (int i = 0; i< customer.getBasket().size(); i++){
                 calcCost += customer.getBasket().get(i).getValue();
             }
+            adjustBuyOneGetOneFree(customer);
             //below two lines adjust totals over £20 by reducing cost by 10%
             if (calcCost > 2000){
                 calcCost = (calcCost - ((calcCost/100)*10));
@@ -48,9 +53,8 @@ public class CheckOut {
             if (frequency % 2 == 0){
                 calcCost = calcCost - customer.getBasket().get(i).getValue();
             }
-            if (frequency % 3 == 0){
-                calcCost = calcCost - customer.getBasket().get(i).getValue();
-            }
+            customer.getBasket().remove(i);
+            i--;
         }
     }
 }

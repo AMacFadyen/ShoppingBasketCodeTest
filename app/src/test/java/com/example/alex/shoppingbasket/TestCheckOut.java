@@ -44,7 +44,7 @@ public class TestCheckOut {
     }
 
     @Test
-    public void testBuyOneGetOneFree(){
+    public void testCanAddManyItems(){
         customer1.addItem(item1);
         customer1.addItem(item1);
         assertEquals(2, customer1.getBasket().size());
@@ -66,8 +66,13 @@ public class TestCheckOut {
         customer1.addItem(item3);
         customer1.addItem(item4);
         assertEquals(2382, checkOut.getCost(customer1), 0.0);
-//        checkOut.getLoyaltyDiscount(customer1);
-//        assertEquals(2381, checkOut.getCost(customer1), 0.0);
+    }
+
+    @Test
+    public void testBuyOneGetOneFree(){
+        customer2.addItem(item1);
+        customer2.addItem(item1);
+        assertEquals(600, checkOut.getCost(customer2), 0.0);
     }
 
 
