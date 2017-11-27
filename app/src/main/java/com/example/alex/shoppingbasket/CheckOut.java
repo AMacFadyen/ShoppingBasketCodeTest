@@ -6,7 +6,7 @@ package com.example.alex.shoppingbasket;
 
 public class CheckOut {
 
-    private Integer initialCost;
+    private Integer calcCost;
 
     public CheckOut(){
     }
@@ -15,23 +15,35 @@ public class CheckOut {
         return customer.getLoyaltyCard();
     }
 
-    public Integer getTotalCost(Customer customer){
-        initialCost = 0;
+    public Integer getCost(Customer customer){
+        calcCost = 0;
             for (int i = 0; i< customer.getBasket().size(); i++){
-                initialCost += customer.getBasket().get(i).getValue();
+                calcCost += customer.getBasket().get(i).getValue();
             }
-            return initialCost;
+            //below two lines adjust totals over £20 by reducing cost by 10%
+            if (calcCost > 2000){
+                calcCost = (calcCost - ((calcCost/100)*10));
+            }
+            //Loyalty discount adjusts the calcCost by 2% if customer discount boolean returns true
+            getLoyaltyDiscount(customer);
+            return calcCost;
+    }
+
+    public void getLoyaltyDiscount(Customer customer){
+        if(hasLoyaltyCard(customer)){
+            calcCost =(calcCost - ((calcCost/100)*2));
         }
     }
 
 
-
-
-
-
-
-//    public void applyBuy1Get1Free(Item item){
-//        for (int i = 0; i<customer.getBasket().size(); i++){
-//
-//        }
+//    public void adjustBuyOneGetOneFree(Customer customer){
+//        String comparedItem = customer.getBasket().get(0).getName();
+//        for()
 //    }
+}
+
+
+
+
+
+
