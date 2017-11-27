@@ -31,14 +31,6 @@ public class TestCheckOut {
     }
 
     @Test
-    public void testCustomerInitialCost(){
-        customer1.addItem(item1);
-        customer1.addItem(item2);
-        customer1.addItem(item3);
-        assertEquals(1200, checkOut.getCost(customer1), 0.0);
-    }
-
-    @Test
     public void testHasLoyaltyCard(){
         assertEquals(true, checkOut.hasLoyaltyCard(customer1));
     }
@@ -52,11 +44,11 @@ public class TestCheckOut {
 
     @Test
     public void test10PercentDiscountOverSpending20(){
-        customer1.addItem(item1);
-        customer1.addItem(item2);
-        customer1.addItem(item3);
-        customer1.addItem(item4);
-        assertEquals(2430, checkOut.getCost(customer1), 0.0);
+        customer2.addItem(item1);
+        customer2.addItem(item2);
+        customer2.addItem(item3);
+        customer2.addItem(item4);
+        assertEquals(2430, checkOut.getCost(customer2), 0.0);
     }
 
     @Test
