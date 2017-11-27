@@ -1,5 +1,11 @@
 package com.example.alex.shoppingbasket;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+
+import static android.media.CamcorderProfile.get;
+
 /**
  * Created by Alex on 26/11/2017.
  */
@@ -24,7 +30,7 @@ public class CheckOut {
             if (calcCost > 2000){
                 calcCost = (calcCost - ((calcCost/100)*10));
             }
-            //Loyalty discount adjusts the calcCost by 2% if customer discount boolean returns true
+            //Loyalty discount method below adjusts the calcCost by 2% if customer discount boolean returns true
             getLoyaltyDiscount(customer);
             return calcCost;
     }
@@ -36,10 +42,17 @@ public class CheckOut {
     }
 
 
-//    public void adjustBuyOneGetOneFree(Customer customer){
-//        String comparedItem = customer.getBasket().get(0).getName();
-//        for()
-//    }
+    public void adjustBuyOneGetOneFree(Customer customer){
+        for(int i = 0; i < customer.getBasket().size(); i++){
+           int frequency = Collections.frequency(customer.getBasket(), customer.getBasket().get(i));
+            if (frequency % 2 == 0){
+                calcCost = calcCost - customer.getBasket().get(i).getValue();
+            }
+            if (frequency % 3 == 0){
+                calcCost = calcCost - customer.getBasket().get(i).getValue();
+            }
+        }
+    }
 }
 
 
